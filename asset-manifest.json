@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/paulkruger.github.io/static/css/main.47b45173.css",
+    "main.js": "/paulkruger.github.io/static/js/main.bc06383a.js",
+    "static/js/453.1407b060.chunk.js": "/paulkruger.github.io/static/js/453.1407b060.chunk.js",
+    "index.html": "/paulkruger.github.io/index.html",
+    "main.47b45173.css.map": "/paulkruger.github.io/static/css/main.47b45173.css.map",
+    "main.bc06383a.js.map": "/paulkruger.github.io/static/js/main.bc06383a.js.map",
+    "453.1407b060.chunk.js.map": "/paulkruger.github.io/static/js/453.1407b060.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.47b45173.css",
+    "static/js/main.bc06383a.js"
+  ]
+}
