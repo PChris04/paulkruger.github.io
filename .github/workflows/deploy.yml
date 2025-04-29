@@ -30,19 +30,34 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install --legacy-peer-deps
 
       - name: Build project
         run: npm run build
 
-      # This is the key change - using upload-artifact with explicit version
-      # instead of upload-pages-artifact which might be causing the issue
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
+      - name: Check build output
+        run: |
+          echo "Checking build output directory..."
+          ls -la ./out
+          echo "Directory size:"
+          du -sh ./out
+          echo "Checking for symlinks:"
+          find ./out -type l | wc -l
+
+      - name: Prepare artifact
+        run: |
+          # Remove any potential symlinks
+          find ./out -type l -delete
+          # Remove any node_modules if they somehow got included
+          rm -rf ./out/node_modules
+          # Create a simple file to verify content
+          echo "Deployment timestamp: $(date)" > ./out/deployment-info.txt
+
+      # Use the GitHub Pages specific artifact action
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: github-pages
           path: ./out
-          if-no-files-found: error
 
   deploy:
     environment:
@@ -51,15 +66,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: github-pages
-          path: ./out
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
