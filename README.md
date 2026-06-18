@@ -28,31 +28,6 @@ An interactive terminal-themed portfolio website for Paul Kruger, an aspiring et
 
 This project is configured for GitHub Pages deployment using GitHub Actions.
 
-### Automatic Deployment
-
-1. Push changes to the main branch
-2. GitHub Actions will automatically build and deploy the site
-3. The site will be available at: https://pchris04.github.io/Ethical-hacker-portfolio/
-
-### Manual Setup (if needed)
-
-1. Go to your repository Settings > Pages
-2. Set the source to "GitHub Actions"
-3. The workflow will automatically build and deploy your site
-
-## Local Development
-
-\`\`\`bash
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-
-# Build for production
-npm run build
-\`\`\`
-
 ## Technologies Used
 
 - Next.js
@@ -61,40 +36,3 @@ npm run build
 - Tailwind CSS
 \`\`\`
 
-Finally, let's create a simple .gitignore file:
-
-```gitignore file=".gitignore"
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-.yarn/install-state.gz
-
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# local env files
-.env*.local
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
